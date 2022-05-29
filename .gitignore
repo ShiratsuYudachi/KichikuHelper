@@ -2,6 +2,8 @@
 Frames
 SourceVideos/
 SubtitleImages
+subtitles
+videoLibs
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
