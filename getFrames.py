@@ -20,6 +20,7 @@ def getFrames():
                 os.rename(videoPath+i+"\\"+k,videoPath+i+"\\"+new_name)#avoid non-ascii chracters
                 getFramesFrom(videoPath+i+"\\"+new_name,new_name)
                 shutil.move(videoPath+i+"\\"+new_name,videoLibPath)
+                os.removedirs(videoPath+i)
         else:
             new_name = str(times)+'.mp4'
             os.rename(videoPath+i,videoPath+new_name)

@@ -9,7 +9,7 @@ frameFrequency = 10
 #最大OCR进程数，增加可节省OCR时间但请注意阁下的硬件性能
 #参考：在3600x/16g@DDR4/GTX1060@3g的pc中，6进程可以达到最高效率(无后台)
 #过多将降低效率，上述条件中超过会遇到显存与内存瓶颈，于6进程时占用70%CPU与20%GPU
-ProcessNumber = 3
+ProcessNumber = 2
 #whether not to turn the SutitleImage to Black and Whie, generally you dont need to touch it 
 #是否不将字幕图片转为黑白，一般不需要动这个
 cropOnly = False
