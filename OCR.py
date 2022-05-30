@@ -1,6 +1,7 @@
 from copyreg import pickle
 from multiprocessing.dummy import Process
 from utilities import sortList
+from utilities import MergeMKII
 import easyocr
 import os
 import multiprocessing as mp
@@ -8,9 +9,11 @@ import time
 import json
 from config import ProcessNumber
 
+
 path = path = os.path.dirname(__file__)+'\\'
 savePath = path+'subtitles\\'
 subtitleImagePath = path+'SubtitleImages\\'
+symbols = ['-','_', '=', '！', '!', '@', '#', '￥', '%', '…','&','*','(',')','~',':','"','{',"'",'}','[',']','|','\\','?','/','<','>',',','.',';','+']
 
 def save(list):
     if not os.path.exists(savePath):
@@ -23,7 +26,10 @@ def getSubtitlesOf(videoName):
         return json.loads(f.read())
 
 def mergeSubtitle(list):
-    pass
+    for i in list:
+        i[0] = i[0].replace('，','  ')
+        for k in symbols:
+            i[0] = i[0].replace(k,'')
     i = 0
     while i<len(list)-1:
         if list[i][0] == list[i+1][0]:
@@ -31,7 +37,7 @@ def mergeSubtitle(list):
             del list[i+1]
         else:
             i+=1
-    return list
+    return MergeMKII(list)
             
 def read(imagePath):
     reader = easyocr.Reader(['ch_sim','en'])

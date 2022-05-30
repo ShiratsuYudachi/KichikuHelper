@@ -27,6 +27,7 @@ if __name__ == '__main__':
                 for i in subtitles:
                     if keyword in i[0]:
                         TGTList.append(i)
+                #TODO: give the list, y/n?
                 for i in TGTList:
                     subclip(i[1],i[2],i[3],keyword)
 

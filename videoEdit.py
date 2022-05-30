@@ -7,6 +7,8 @@ path = os.path.dirname(__file__)+'\\'
 if not os.path.exists(path+'outputs\\'):
         os.mkdir(path+'outputs\\')
 def subclip(src,frameStart,frameEnd,keyword):
+    if frameEnd == None:
+        frameEnd = 0
     videoPath = path+'VideoLibs\\'+src
     fps = VideoFileClip(videoPath).fps
     timeStart = (frameStart-frameFrequency)/fps

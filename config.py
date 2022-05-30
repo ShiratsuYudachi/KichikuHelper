@@ -14,3 +14,6 @@ cropOnly = False
 #0~255, 用于黑白化图片的阈值
 #如果视频中的字幕并非纯白，请尝试降低
 thresh = 240
+#0~1, threshold used when merging two subtitles(because of the inaccuracy of OCR)
+#0~1, 用于决定是否合并两个字幕的阈值(因为OCR的不准确性)
+similarity_threshold = 0.7
