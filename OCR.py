@@ -5,18 +5,23 @@ import easyocr
 import os
 import multiprocessing as mp
 import time
+import json
 from config import ProcessNumber
 
 path = path = os.path.dirname(__file__)+'\\'
+savePath = path+'subtitles\\'
 subtitleImagePath = path+'SubtitleImages\\'
 
 def save(list):
-    savePath = path+'subtitles\\'
     if not os.path.exists(savePath):
         os.mkdir(savePath)
-    with open(savePath+list[0][1]+'.txt','w') as f:
-        f.write(str(list))
-    
+    with open(savePath+list[0][1]+'.json','w') as f:
+        f.write(json.dumps(list, indent=4))
+
+def getSubtitlesOf(videoName):
+    with open (savePath+videoName) as f:
+        return json.loads(f.read())
+
 def mergeSubtitle(list):
     pass
     i = 0
