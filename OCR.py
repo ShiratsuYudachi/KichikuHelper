@@ -49,7 +49,7 @@ def read(imagePath):
 
 def readall():
     print('preparing to extract subtitles from '+str(os.listdir(subtitleImagePath)))
-    for i in sortList(os.listdir(subtitleImagePath)):
+    for i in os.listdir(subtitleImagePath):
         todo = []
         for k in sortList(os.listdir(subtitleImagePath+i)):
             todo.append(subtitleImagePath+i+'\\'+k)
