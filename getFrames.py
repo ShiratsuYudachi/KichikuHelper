@@ -2,6 +2,7 @@ import os
 import shutil
 import cv2
 from config import frameFrequency
+from config import force_rename
 
 path = (os.path.abspath(os.path.dirname(__file__)))+'\\'
 outPutPath = path+'Frames\\'
@@ -16,14 +17,20 @@ def getFrames():
     for i in os.listdir(videoPath):
         if os.path.isdir(videoPath+i):
             for k in os.listdir(videoPath+i):
-                new_name = str(times)+'.mp4'
-                os.rename(videoPath+i+"\\"+k,videoPath+i+"\\"+new_name)#avoid non-ascii chracters
+                if force_rename:
+                    new_name = str(len(os.listdir(path+'VideoLibs\\'))+1)+'.mp4'
+                    os.rename(videoPath+i+"\\"+k,videoPath+i+"\\"+new_name)#avoid non-ascii chracters
+                else:
+                    new_name = k
                 getFramesFrom(videoPath+i+"\\"+new_name,new_name)
                 shutil.move(videoPath+i+"\\"+new_name,videoLibPath)
                 os.removedirs(videoPath+i)
         else:
-            new_name = str(times)+'.mp4'
-            os.rename(videoPath+i,videoPath+new_name)
+            if force_rename:
+                    new_name = str(times)+'.mp4'
+                    os.rename(videoPath+i,videoPath+new_name)
+            else:
+                    new_name = i
             getFramesFrom(videoPath+new_name,new_name)
             shutil.move(videoPath+new_name,videoLibPath)
         times+=1

@@ -1,4 +1,3 @@
-from traceback import FrameSummary
 import cv2
 import os
 from config import cropOnly
