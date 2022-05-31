@@ -2,6 +2,8 @@ import cv2
 import os
 from config import cropOnly
 from config import thresh
+import shutil
+
 path = os.path.dirname(__file__)+'\\'
 savePath = path+'SubtitleImages\\'
 if not os.path.exists(savePath):
@@ -30,6 +32,7 @@ def generateAllSubtitleImage():
         else:
             getSubtitleImage(path+'Frames\\'+i)
             print('processed '+ path+'Frames\\'+i)
+        shutil.rmtree(path+"Frames\\"+i)
 
 if __name__ == '__main__':
     generateAllSubtitleImage()

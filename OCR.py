@@ -7,6 +7,7 @@ import os
 import multiprocessing as mp
 import time
 import json
+import shutil
 from config import ProcessNumber
 
 
@@ -59,6 +60,7 @@ def readall():
         result = mergeSubtitle(pool.map(read,todo))
         print(result)
         save(result)
+        shutil.rmtree(subtitleImagePath+i)
 
 if __name__ == "__main__":
     start_time = time.time()
