@@ -6,8 +6,7 @@ from videoEdit import subclip
 import time
 import os
 
-path = os.path.dirname(__file__)+'\\'
-
+path = os.path.abspath(os.path.dirname(__file__))+'\\'
 
 if __name__ == '__main__':
     while True:
@@ -20,16 +19,26 @@ if __name__ == '__main__':
             end = time.time()
             print('Time elapsed: '+str(end-start))
         elif cmd == 'genvideo' or cmd == 'gen':
-            keyword = input('Keyword=')
-            for video in os.listdir(path+'subtitles\\'):
-                subtitles = getSubtitlesOf(video)
-                TGTList = []
-                for i in subtitles:
-                    if keyword in i[0]:
-                        TGTList.append(i)
-                #TODO: give the list, y/n?
-                for i in TGTList:
-                    subclip(i[1],i[2],i[3],keyword)
+            while True:
+                SubclipList = []
+                keyword = input('Keyword=')
+                entriesNum = 0
+                for video in os.listdir(path+'subtitles\\'):
+                    subtitles = getSubtitlesOf(video)
+                    TGTList = []
+                    for i in subtitles:
+                        if keyword in i[0]:
+                            TGTList.append(i)
+                            entriesNum+=1
+                    if len(TGTList)>0:
+                        SubclipList.append(TGTList)
+                cmd = input('Founded {0} entries matching {1} in {2} videos, continue to subclip video?(y/n)'.format(str(entriesNum),keyword,len(SubclipList))) == 'y'#r for research
+                if cmd:
+                    for k in SubclipList:
+                        for i in k:
+                            subclip(i[1],i[2],i[3],keyword)
+                    break
+                
         elif cmd == 'genframe':
             getFrames()
         elif cmd == 'gensubimg':

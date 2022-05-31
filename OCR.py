@@ -11,7 +11,7 @@ import shutil
 from config import ProcessNumber
 
 
-path = path = os.path.dirname(__file__)+'\\'
+path = os.path.abspath(os.path.dirname(__file__))+'\\'
 savePath = path+'subtitles\\'
 subtitleImagePath = path+'SubtitleImages\\'
 symbols = ['-','_', '=', '！', '!', '@', '#', '￥', '%', '…','&','*','(',')','~',':','"','{',"'",'}','[',']','|','\\','?','/','<','>',',','.',';','+']

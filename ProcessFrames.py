@@ -4,7 +4,7 @@ from config import cropOnly
 from config import thresh
 import shutil
 
-path = os.path.dirname(__file__)+'\\'
+path = os.path.abspath(os.path.dirname(__file__))+'\\'
 savePath = path+'SubtitleImages\\'
 if not os.path.exists(savePath):
     os.mkdir(savePath)
