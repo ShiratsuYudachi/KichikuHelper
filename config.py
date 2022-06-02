@@ -2,10 +2,10 @@
 
 #extrat one frame per $frameFrequency frames, higher value save OCR time but down the accuracy of time
 #每x帧提取一帧，增加将节省OCR的时间但会降低时间精度
-frameFrequency = 10
+frameFrequency = 20
 #Max Process used to OCR, higher value will shorten the time needed for OCR but YOU NEED PAY ATTTENTION TO YOUR HARDWARE
 #最大OCR进程数，增加可节省OCR时间但请注意阁下的硬件性能
-ProcessNumber = 2
+ProcessNumber = 1
 #whether not to turn the SutitleImage to Black and Whie, generally you dont need to touch it 
 #是否不将字幕图片转为黑白，一般不需要动这个
 cropOnly = False
