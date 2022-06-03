@@ -22,14 +22,24 @@ if __name__ == '__main__':
             while True:
                 SubclipList = []
                 keyword = input('Keyword=')
+                norepeat = False
+                if '-norepeat' in keyword.split(' '):#1 clip per video
+                    norepeat = True
+                keyword = keyword.split(' ')[0]
                 entriesNum = 0
                 for video in os.listdir(path+'subtitles\\'):
                     subtitles = getSubtitlesOf(video)
                     TGTList = []
                     for i in subtitles:
                         if keyword in i[0]:
-                            TGTList.append(i)
-                            entriesNum+=1
+                            if norepeat:
+                                if len(TGTList) == 0:
+                                    TGTList.append(i)
+                                    entriesNum+=1
+                            else:
+                                TGTList.append(i)
+                                entriesNum+=1
+
                     if len(TGTList)>0:
                         SubclipList.append(TGTList)
                 cmd = input('Founded {0} entries matching {1} in {2} videos, continue to subclip video?(y/n)'.format(str(entriesNum),keyword,len(SubclipList))) == 'y'#r for research
@@ -38,7 +48,7 @@ if __name__ == '__main__':
                         for i in k:
                             subclip(i[1],i[2],i[3],keyword)
                     break
-                
+
         elif cmd == 'genframe':
             getFrames()
         elif cmd == 'gensubimg':
