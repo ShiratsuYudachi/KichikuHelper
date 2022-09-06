@@ -4,6 +4,7 @@
 A small tool to help you catch material for Kichiku Videos
 
 It can generate all video excerpts that containing specified keyword in subtitle from a large amount of videos.
+
 基于对字幕进行OCR，可从大量视频中批量导出字幕含有某关键词的片段
 
 
