@@ -1,4 +1,4 @@
-###I hope this project can help me pass the waiver for COMP2011
+###I hope this project can help me pass the waiver for COMP courses
 
 # KichikuHelper
 A small tool to help you catch material for Kichiku Videos
